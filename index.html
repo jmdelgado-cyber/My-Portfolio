@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio — Graphic Designer</title>
+  <meta name="description" content="A fearless female graphic designer crafting bold, clean visuals and advanced systems across brand, poster, and social media design.">
+  <meta property="og:title" content="Graphic Designer Portfolio">
+  <meta property="og:description" content="Bold, clean visuals with an advanced, accessible system.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/">
+  <meta property="og:image" content="https://example.com/preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="canonical" href="https://example.com/">
+  <style>
+    html { scroll-behavior: smooth; }
+    :root { --bg:#f7fafc; --surface:#ffffff; --text:#0f172a; --muted:#334155; --accent:#7c3aed; --accent2:#a78bfa; --border:#e5e7eb; --focus:#7c3aed; }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; line-height:1.6; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    header { position: sticky; top:0; backdrop-filter: blur(6px); background: rgba(255,255,255,.75); border-bottom: 1px solid var(--border); z-index: 20; }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight: 700; letter-spacing:.3px; }
+    .logo { width:28px; height:28px; border-radius:8px; background: linear-gradient(135deg, var(--accent), var(--accent2)); overflow:hidden; }
+    .logo img { width:100%; height:100%; object-fit:cover; border-radius:8px; }
+    nav ul { display:flex; gap:16px; list-style:none; padding:0; margin:0; }
+    nav a { color: var(--muted); padding:8px 10px; border-radius:8px; }
+    nav a:hover { background: var(--surface); color: var(--text); }
+    .menu-btn { display:none; align-items:center; gap:8px; padding:8px 12px; border-radius:10px; border:1px solid var(--border); background: var(--surface); color: var(--text); }
+    
+    .hero { padding: 60px 0 30px; }
+    .hero h1 { font-size: clamp(28px, 4vw, 44px); margin:0 0 10px; }
+    .tagline { font-size: clamp(16px, 2.2vw, 20px); color: var(--muted); }
+    .cta { margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; }
+    .btn { display:inline-block; padding:10px 14px; border-radius:10px; border:1px solid var(--border); background: var(--surface); color: var(--text); }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); border: none; color: #fff; }
+    section { padding: 36px 0; border-top: 1px solid var(--border); }
+    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .card .content { padding: 16px; }
+    .thumb { height: 160px; background: radial-gradient(1200px 500px at 20% 20%, rgba(124,58,237,.25), transparent), linear-gradient(135deg, rgba(167,139,250,.18), rgba(124,58,237,.08)); }
+    h2 { font-size: 24px; margin:0 0 14px; }
+    h3 { font-size: 20px; margin: 0 0 8px; }
+    .muted { color: var(--muted); }
+    .list { display:flex; gap:10px; flex-wrap:wrap; }
+    .chip { padding:6px 10px; border:1px solid var(--border); border-radius:999px; color: var(--muted); background: rgba(124,58,237,.08); font-size: 14px; }
+    .media { height: 220px; border-radius: 12px; background: linear-gradient(120deg, rgba(124,58,237,.20), rgba(167,139,250,.12)); }
+    .hero-media { height: 240px; }
+    .square { aspect-ratio: 1 / 1; border-radius: 12px; background: linear-gradient(135deg, rgba(124,58,237,.18), rgba(167,139,250,.10)); border:1px solid var(--border); }
+    .testimonial { padding:16px; }
+    .quote { font-style: italic; }
+    footer { padding: 30px 0; color: var(--muted); border-top: 1px solid var(--border); }
+    .skip-link { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip-link:focus { position: fixed; left: 16px; top: 16px; width:auto; height:auto; padding:8px 12px; background: var(--surface); border:1px solid var(--border); border-radius:10px; z-index:100; }
+    .reveal { transform: translateY(12px); opacity: 0; transition: opacity .4s ease, transform .4s ease; }
+    .reveal.in { transform: translateY(0); opacity: 1; }
+    @media (max-width: 900px) { .grid { grid-template-columns: repeat(6, 1fr); } }
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: repeat(4, 1fr); }
+      .hero { padding: 36px 0 18px; }
+      .menu-btn { display:inline-flex; }
+      .nav { position: relative; }
+      .nav ul { display:none; position:absolute; right:20px; top:54px; background: var(--surface); border:1px solid var(--border); border-radius:12px; padding:12px; flex-direction:column; gap:6px; box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+      .nav.open ul { display:flex; }
+      nav a { padding:10px 12px; }
+    }
+    #to-top { position: fixed; right: 16px; bottom: 16px; padding:10px 12px; border-radius:999px; border:1px solid var(--border); background: var(--surface); color: var(--text); box-shadow: 0 6px 20px rgba(0,0,0,.08); opacity:0; pointer-events:none; transition: opacity .2s ease, transform .2s ease; }
+    #to-top.show { opacity:1; pointer-events:auto; }
+    .card { transition: transform .2s ease, box-shadow .2s ease; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(124,58,237,.12); }
+    .skill-name { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    .meter { height: 12px; border-radius:999px; background: rgba(124,58,237,.10); border:1px solid var(--border); overflow:hidden; }
+    .meter > span { display:block; height:100%; width:0; background: linear-gradient(90deg, var(--skill, #7c3aed), var(--skill2, #a78bfa)); transition: width .8s ease; }
+    .rating-row { display:flex; align-items:center; justify-content:space-between; margin-top:10px; }
+    .rating-percent { font-weight:700; color: var(--text); }
+    .rating-badge { padding:6px 10px; border-radius:999px; border:1px solid var(--border); font-size:12px; }
+    .projects-grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow:hidden; }
+    .project-thumb { height: 140px; background: linear-gradient(135deg, rgba(124,58,237,.18), rgba(167,139,250,.10)); }
+    .project-thumb img { width:100%; height:100%; object-fit:contain; object-position:center; display:block; }
+    .square img { width:100%; height:100%; object-fit:cover; display:block; }
+    .media img { width:100%; height:100%; object-fit:contain; display:block; }
+    .project-content { padding: 14px; }
+    .contact-list { list-style:none; padding:0; margin:0; display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
+    .contact-item { display:flex; align-items:center; gap:12px; padding:12px; border:1px solid var(--border); border-radius:12px; background: var(--surface); }
+    .contact-icon { width:28px; height:28px; border-radius:8px; background: linear-gradient(135deg, var(--accent), var(--accent2)); flex: none; }
+    .contact-body { flex:1; }
+    .contact-title { font-weight:700; }
+    .contact-icon { display:grid; place-items:center; }
+    .contact-icon img { width:18px; height:18px; object-fit:cover; border-radius:4px; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <div class="brand"><div class="logo" aria-hidden="true"><img src="/c:/JANICE/CEEL/random-icons-png-favpng-48dZQ9PzjZA9quEmMKtG90Rwn.jpg" alt=""></div><div>Janice D.</div></div>
+      <nav>
+        <ul id="primary-nav">
+          <li><a href="#home" aria-current="page">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="menu-btn" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="home" class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <h1 id="hero-title">Graphic Designer</h1>
+        <div class="grid" style="margin-top:20px;">
+          <div class="card reveal" style="grid-column: span 5;">
+            <div class="media hero-media" role="img" aria-label="Portrait or design sample">
+              <img src="/c:/JANICE/CEEL/b1749f0d-44f8-48d6-bf84-d76e7c0fa43d.jpg" alt="Hero side image">
+            </div>
+          </div>
+          <div class="card reveal" style="grid-column: span 7;">
+            <div class="content">
+              <div class="tagline">Introduction to my portfolio</div>
+              <p class="muted">I craft bold, clean visuals. This page introduces my work and approach.</p>
+              <div class="list" style="margin-top:6px;">
+                <span class="chip">Branding</span>
+                <span class="chip">Poster Design</span>
+                <span class="chip">Social Media</span>
+              </div>
+              <div class="cta" style="margin-top:14px;">
+                <a class="btn primary" href="#projects">View Projects</a>
+                <a class="btn" href="#about">About Me</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <div class="container">
+        <h2 id="about-title">About Me</h2>
+        <div class="grid">
+          <div class="card reveal" style="grid-column: span 5;">
+            <div class="media square">
+              <img src="/c:/JANICE/CEEL/291bf227-918f-491a-8978-9111c813f119.jpg" alt="Profile photo">
+            </div>
+          </div>
+          <div class="card reveal" style="grid-column: span 7;">
+            <div class="content">
+              <p>Basic Info together with my picture.</p>
+              <p>I am a graphic designer who loves turning ideas into clean, modern, and visually engaging dsigns . I work with color, type, and layout to communicate messages that feel fresh and purposeful.</p>
+              <p>Education and Experience: Freelance projects for local brands, design work for school organizations, and collaborative campaigns.</p>
+              <p>Philosophy: Graphic design is more than decoration, it is visual communication.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <h2 id="projects-title">Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card reveal" style="grid-column: span 4;">
+            <div class="project-thumb"><img src="/c:/JANICE/CEEL/64d400a8-a78a-4c3f-bae2-25c5ad165488.jpg" alt="Project One"></div>
+            <div class="project-content"><h3>Project One</h3><div class="muted">Social Media Post</div></div>
+          </div>
+          <div class="project-card reveal" style="grid-column: span 4;">
+            <div class="project-thumb"><img src="/c:/JANICE/CEEL/977e79db-b4b4-49f0-97c1-b924608b1234.jpg" alt="Project Two"></div>
+            <div class="project-content"><h3>Project Two</h3><div class="muted">Landing Page</div></div>
+          </div>
+          <div class="project-card reveal" style="grid-column: span 4;">
+            <div class="project-thumb"><img src="/c:/JANICE/CEEL/39601a1a-1fa2-439d-a403-8b98a7ba8550.jpg" alt="Project Three"></div>
+            <div class="project-content"><h3>Project Three</h3><div class="muted">Newsletter Header</div></div>
+          </div>
+          <div class="project-card reveal" style="grid-column: span 4;">
+            <div class="project-thumb"><img src="/c:/JANICE/CEEL/b1749f0d-44f8-48d6-bf84-d76e7c0fa43d.jpg" alt="Project Four" style="filter: brightness(1.12) contrast(1.05);"></div>
+            <div class="project-content"><h3>Project Four</h3><div class="muted">Banner Ad • Logo</div></div>
+          </div>
+          <div class="project-card reveal" style="grid-column: span 4;">
+            <div class="project-thumb"><img src="/c:/JANICE/CEEL/f1a26c28-4156-4d0a-ae3d-2d441d0dec6b.jpg" alt="Project Five"></div>
+            <div class="project-content"><h3>Project Five</h3><div class="muted">Short subtitle</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <h2 id="skills-title">Skills</h2>
+        <div class="grid" id="skills-grid">
+          <div class="card reveal" style="grid-column: span 4;" data-skill="Photoshop" data-color="#7c3aed" data-color2="#a78bfa" data-random="true">
+            <div class="content">
+              <div class="skill-name"><h3>Photoshop</h3><span class="rating-badge">Image Editing</span></div>
+              <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+              <div class="rating-row"><span class="muted">Layering, retouch, compositing</span><span class="rating-percent">0%</span></div>
+            </div>
+          </div>
+          <div class="card reveal" style="grid-column: span 4;" data-skill="Illustrator" data-color="#6d28d9" data-color2="#a78bfa" data-random="true">
+            <div class="content">
+              <div class="skill-name"><h3>Illustrator</h3><span class="rating-badge">Vector</span></div>
+              <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+              <div class="rating-row"><span class="muted">Logos, icons, brand marks</span><span class="rating-percent">0%</span></div>
+            </div>
+          </div>
+          <div class="card reveal" style="grid-column: span 4;" data-skill="InDesign" data-color="#8b5cf6" data-color2="#c084fc" data-random="true">
+            <div class="content">
+              <div class="skill-name"><h3>Figma</h3><span class="rating-badge">Layout</span></div>
+              <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+              <div class="rating-row"><span class="muted">Wireframes, components, prototypes</span><span class="rating-percent">0%</span></div>
+            </div>
+          </div>
+          <div class="card reveal" style="grid-column: span 4;" data-skill="Figma" data-color="#9333ea" data-color2="#c084fc" data-random="true">
+            <div class="content">
+              <div class="skill-name"><h3>Creativity</h3><span class="rating-badge">UI</span></div>
+              <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+              <div class="rating-row"><span class="muted">Abiliti to generate unique and appealing design ideas</span><span class="rating-percent">0%</span></div>
+            </div>
+          </div>
+          <div class="card reveal" style="grid-column: span 4;" data-skill="Canva" data-color="#7c3aed" data-color2="#c084fc" data-random="true">
+            <div class="content">
+              <div class="skill-name"><h3>Time Management</h3><span class="rating-badge">Social</span></div>
+              <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+              <div class="rating-row"><span class="muted">Finishing design tasks efficiently and meeting deadlines</span><span class="rating-percent">0%</span></div>
+            </div>
+          </div>
+          <div class="card reveal" style="grid-column: span 4;" data-skill="Typography" data-color="#6d28d9" data-color2="#8b5cf6" data-random="true">
+            <div class="content">
+              <div class="skill-name"><h3>Critical Thinking</h3><span class="rating-badge">Type</span></div>
+              <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+              <div class="rating-row"><span class="muted">Making design design based on logic, purpose, and visual strategy</span><span class="rating-percent">0%</span></div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    
+
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title">Contact</h2>
+        <div class="grid">
+          <div class="card reveal" style="grid-column: span 12;">
+            <div class="content">
+              <ul class="contact-list" aria-label="Contact methods">
+                <li class="contact-item">
+                  <div class="contact-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
+                    
+                  </div>
+                  <div class="contact-body"><div class="contact-title">Email</div><div class="muted">jmdelgado@ccc.edu.ph</div></div>
+                </li>
+                <li class="contact-item">
+                  <div class="contact-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="10" fill="none" stroke="#fff" stroke-width="2"></circle><text x="12" y="16" text-anchor="middle" font-size="12" font-family="Arial" fill="#fff">f</text></svg>
+                  </div>
+                  <div class="contact-body"><div class="contact-title">Facebook</div><div class="muted">Janice Delgado</div></div>
+                </li>
+                <li class="contact-item">
+                  <div class="contact-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="5"></rect><circle cx="12" cy="12" r="3"></circle><circle cx="17" cy="7" r="1" fill="#fff" stroke="none"></circle></svg>
+                  </div>
+                  <div class="contact-body"><div class="contact-title">Instagram</div><div class="muted">itsjanice11</div></div>
+                </li>
+                
+                <li class="contact-item">
+                  <div class="contact-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><path d="M3 5c0-1.1.9-2 2-2h2c.7 0 1.3.4 1.6 1l1.2 2.4c.2.4.1.9-.2 1.2l-1.7 1.7a12 12 0 008.1 8.1l1.7-1.7c.3-.3.8-.4 1.2-.2l2.4 1.2c.6.3 1 .9 1 1.6v2c0 1.1-.9 2-2 2H19A16 16 0 013 7V5z"></path></svg>
+                  </div>
+                  <div class="contact-body"><div class="contact-title">Phone</div><div class="muted">09930633151</div></div>
+                </li>
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2025 Janice D. All rights reserved.</div>
+  </footer>
+  <button id="to-top" aria-label="Back to top">Top</button>
+  <script>
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    const nav = document.querySelector('.nav');
+    const menuToggle = document.getElementById('menu-toggle');
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+      });
+      document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('open');
+      }));
+    }
+    const links = Array.from(document.querySelectorAll('nav a'));
+    const linkMap = new Map(links.map(l => [l.getAttribute('href').replace('#',''), l]));
+    const sections = document.querySelectorAll('main section[id]');
+    const secObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          links.forEach(l => l.removeAttribute('aria-current'));
+          const active = linkMap.get(id);
+          if (active) active.setAttribute('aria-current', 'page');
+        }
+      });
+    }, { threshold: 0.6 });
+    sections.forEach(s => secObserver.observe(s));
+    const toTop = document.getElementById('to-top');
+    window.addEventListener('scroll', () => {
+      toTop.classList.toggle('show', window.scrollY > 300);
+    });
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    function rand(min, max){ return Math.floor(Math.random() * (max - min + 1)) + min; }
+    function setMeter(card, percent){
+      const bar = card.querySelector('.meter');
+      const fill = bar.querySelector('span');
+      const label = card.querySelector('.rating-percent');
+      const c1 = card.dataset.color || '#7c3aed';
+      const c2 = card.dataset.color2 || '#a78bfa';
+      fill.style.background = `linear-gradient(90deg, ${c1}, ${c2})`;
+      fill.style.width = percent + '%';
+      bar.setAttribute('aria-valuenow', String(percent));
+      label.textContent = percent + '%';
+    }
+    function randomizeAll(){
+      document.querySelectorAll('#skills-grid .card').forEach(card => {
+        const p = rand(65, 100);
+        setMeter(card, p);
+      });
+    }
+    randomizeAll();
+    
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Her Name",
+    "jobTitle": "Graphic Designer",
+    "gender": "Female",
+    "url": "https://example.com/",
+    "sameAs": ["https://instagram.com/"]
+  }
+  </script>
+</body>
+</html>
